@@ -36,3 +36,12 @@ def number_of_friends(user):
     return len(user["friends"])
 
 total_connections = sum(number_of_friends(user) for user in users)
+
+num_users = len(users)
+avg_connections = total_connections / num_users
+
+num_friends_by_id = [(user["id"], number_of_friends(user)) for user in users]
+
+sorted(num_friends_by_id, 
+       key=lambda (user_id, num_friends): num_friends, 
+       reverse=True)
